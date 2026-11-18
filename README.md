@@ -1,99 +1,182 @@
-# Veritas AI - Enterprise Fake News & Misinformation Detection Platform
+# VeriNews – AI-Powered Fake News Detection System
 
-A multi-factor, high-performance AI Fake News and Misinformation Detection Platform built in pure Java (100% compatible with Eclipse, Android Studio, and Spring Boot).
+### Fake News Detection Using Machine Learning and Hybrid Ensemble Techniques
 
----
+## 1. Project Overview
 
-## 🌟 Key Features
+VeriNews is an AI-powered fake news detection system developed to identify and classify potentially misleading or fabricated news articles using Machine Learning and Natural Language Processing (NLP).
 
-### 1. 🧠 Multi-Factor AI & NLP Engine
-- **TF-IDF + Multinomial Naive Bayes ML**: Log-posterior calculation with Laplace add-1 smoothing.
-- **Sentiment & Emotional Bias Analyzer**: Detects panic induction, outrage, artificial urgency, and hyperbole.
-- **Linguistic & Sensationalism Index**: Analyzes clickbait syntax, exclamation clusters (`!!!`), question clusters (`???`), and capitalization ratios.
-- **Readability & Complexity Index**: Computes Flesch Reading Ease score to distinguish structured journalism from low-quality spam.
-- **Domain & Source Credibility Verifier**: 100+ cataloged authoritative news domains (Reuters, AP, BBC, Nature, WHO, etc.) vs flagged hoax/satire/unreliable domains with spoofing detection.
-- **Fact-Check Query Generator**: Deep-links to Google Fact Check Tools, Snopes, and PolitiFact.
+The project focuses on analyzing textual information, extracting meaningful features, and applying machine learning algorithms to distinguish between real and fake news.
 
-### 2. 🎨 Ultra-Modern Dashboard GUI
-- **Dark Mode & Light Mode**: Instant dynamic theme toggle.
-- **Circular Accuracy Gauge & Metric Progress Bars**: Visual probability indicators (Real %, Fake %, Sensationalism %, Emotional Bias %).
-- **Interactive Pill Tags**: Highlights suspicious words and emotional triggers.
-- **Multi-Tab Workspace**:
-  1. 🔍 **Live AI Scanner**: Inspect articles, URLs, and claims with 1-click sample presets.
-  2. 📊 **Scan History & Audit**: Session history table with filtering, search, and CSV export.
-  3. 🧠 **Model & Dataset Studio**: Real-time vocabulary stats, diagnostic accuracy benchmark, and custom CSV dataset importer.
-  4. 🌐 **Domain Credibility Checker**: Lookup editorial trust ratings for any news outlet.
-  5. 📱 **Mobile & Backend API Guide**: Ready-to-use code snippets for Android (Java/Kotlin) and Spring Boot.
+It uses multiple classification techniques and a hybrid ensemble approach to improve the reliability of news classification.
 
-### 3. 📱 Future App Portability (Android & Spring Boot)
-- **Zero Heavy Dependencies**: Pure Java with zero external native C++/Python requirements.
-- **Headless Service API**: Call `NewsDetectionService.getInstance().detectNews(...)` anywhere.
-- **JSON Serialization**: Call `result.toJson()` to send clean JSON payloads across REST APIs or mobile view models.
+## 2. Objectives
 
----
+- To develop an automated fake news detection system.
+- To classify news articles as Real or Fake using machine learning.
+- To apply Natural Language Processing for text preprocessing.
+- To extract meaningful textual features using TF-IDF vectorization.
+- To implement and compare multiple machine learning algorithms.
+- To evaluate model performance using appropriate evaluation metrics.
+- To provide a practical platform for analyzing potentially misleading information.
 
-## 🚀 How to Run in Eclipse IDE
+## 3. Technologies Used
 
-1. Open **Eclipse IDE**.
-2. Right-click on the project in **Package Explorer** and press **Refresh (F5)**.
-3. Open `src` -> `com.fakenews.detector` -> [`Main.java`](file:///e:/AI_Fake_news_detect/src/com/fakenews/detector/Main.java).
-4. Right-click [`Main.java`](file:///e:/AI_Fake_news_detect/src/com/fakenews/detector/Main.java) -> **Run As** -> **Java Application**.
+| Category | Technologies |
+|---|---|
+| Programming Language | Python |
+| Machine Learning | Scikit-learn |
+| NLP | Natural Language Processing |
+| Feature Extraction | TF-IDF Vectorization |
+| Algorithms | Logistic Regression, Random Forest, SVM |
+| Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib |
+| Frontend | JavaScript |
+| Backend | Python-based services |
+| Deployment | Docker |
 
----
+## 4. Machine Learning Methodology
 
-## 📱 How to Reuse in Android Studio
+The project follows a structured machine learning pipeline.
 
-1. Copy the packages (`api`, `classifier`, `data`, `model`, `nlp`) into your Android project (`app/src/main/java/`).
-2. In your Android Activity or ViewModel:
-```java
-NewsDetectionService service = NewsDetectionService.getInstance();
-PredictionResult result = service.detectNews(title, content, url);
+### 4.1 Data Collection
+News datasets are used to train and evaluate the fake news detection models.
 
-// Use in Android UI:
-String verdict = result.getVerdict().getLabel();
-double confidence = result.getConfidenceScore();
-String jsonOutput = result.toJson();
+### 4.2 Text Preprocessing
+Raw news text is cleaned before applying machine learning techniques.
+
+The preprocessing operations include:
+
+- Removal of unnecessary punctuation and special characters.
+- Text cleaning and normalization.
+- Stopword removal.
+- Preparation of textual data for feature extraction.
+
+### 4.3 Feature Extraction
+
+TF-IDF (Term Frequency–Inverse Document Frequency) is used to convert textual information into numerical feature vectors.
+
+This helps the machine learning models understand the importance of words within news articles.
+
+### 4.4 Model Training
+
+The following machine learning algorithms are implemented and evaluated:
+
+1. **Logistic Regression:** A supervised classification algorithm used for predicting whether news content is real or fake.
+2. **Random Forest:** An ensemble learning algorithm that combines multiple decision trees for classification.
+3. **Support Vector Machine (SVM):** A supervised learning algorithm that identifies an optimal decision boundary between classes.
+
+### 4.5 Hybrid Ensemble Approach
+
+The project explores a hybrid ensemble-based approach to improve classification performance by utilizing multiple machine learning techniques.
+
+### 4.6 Model Evaluation
+
+The models are evaluated using classification performance metrics, including:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
+
+## 5. Project Architecture
+
+The repository is organized into multiple components for machine learning, backend processing, frontend resources, implementation, and experimental results.
+
+```text
+AI-Fake-News-Detection/
+│
+├── backend/
+│   └── app/
+│
+├── ml-service/
+│
+├── fakenews/
+│   └── detector/
+│
+├── public/
+│
+├── src/
+│
+├── veritasai/
+│
+├── Final_Source_Neutral_Results/
+│
+├── Leakage_Controlled_Results/
+│
+├── VeriNews_Final_Implementation.py
+│
+├── API_SPEC.md
+├── CLOUD_DEPLOYMENT.md
+├── COLLEGE_PROJECT_REPORT.md
+├── Final_Research_Paper.md
+│
+├── Dockerfile.backend
+├── Dockerfile.frontend
+├── docker-compose.yml
+│
+└── README.md
 ```
 
+## 6. Key Project Components
+
+- **Machine Learning Module:** Handles model development and classification.
+- **Text Processing Module:** Performs text cleaning and feature extraction.
+- **Backend:** Supports application-side processing and API integration.
+- **Frontend:** Provides the user-facing application resources.
+- **Experimental Results:** Contains result files and evaluation-related outputs.
+- **Research Documentation:** Includes project reports, research paper, and technical documentation.
+
+## 7. Experimental Results
+
+The project includes experimental result directories for different evaluation settings:
+
+- Final Source Neutral Results
+- Leakage Controlled Results
+
+An accuracy comparison visualization is also included in the repository.
+
+These resources support the analysis and evaluation of the implemented fake news detection techniques.
+
+## 8. Deployment
+
+The repository includes Docker configuration files for the backend and frontend services.
+
+To build and start the configured services using Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+To stop the services:
+
+```bash
+docker compose down
+```
+
+Ensure Docker Desktop is installed and running before executing these commands.
+
+## 9. Applications
+
+- Online news verification.
+- Identification of potentially misleading information.
+- Digital media analysis.
+- Research in Natural Language Processing.
+- Machine learning-based text classification.
+
+## 10. Conclusion
+
+VeriNews demonstrates the application of Machine Learning and Natural Language Processing in the field of fake news detection.
+
+By combining text preprocessing, TF-IDF feature extraction, multiple classification algorithms, and hybrid ensemble techniques, the project provides a framework for analyzing and classifying news content.
+
+The project also provides experimental results and implementation documentation to support further research and development in automated misinformation detection.
+
 ---
 
-## 📁 Project Architecture
+**Project:** VeriNews – AI Fake News Detection
 
-```
-AI_Fake_news_detect/
-├── README.md
-└── src/
-    ├── module-info.java
-    └── com/fakenews/detector/
-        ├── Main.java                          (Launcher & CLI runner)
-        ├── api/
-        │   ├── NewsDetectionService.java      (Headless API for Android / Web)
-        │   └── ReportExporter.java            (JSON & Forensic Text Reports)
-        ├── model/
-        │   ├── NewsArticle.java
-        │   ├── PredictionResult.java
-        │   ├── DomainReputation.java
-        │   └── HistoryRecord.java
-        ├── nlp/
-        │   ├── TextPreprocessor.java
-        │   ├── TFIDFVectorizer.java
-        │   ├── SentimentAnalyzer.java
-        │   ├── ReadabilityCalculator.java
-        │   ├── StopWords.java
-        │   └── PorterStemmer.java
-        ├── classifier/
-        │   ├── NaiveBayesClassifier.java
-        │   ├── LinguisticAnalyzer.java
-        │   ├── DomainCredibilityChecker.java
-        │   └── FakeNewsDetector.java
-        ├── data/
-        │   ├── DefaultDataset.java
-        │   ├── DatasetLoader.java
-        │   └── HistoryManager.java
-        └── gui/
-            ├── FakeNewsDetectorGUI.java       (Dashboard UI)
-            ├── ThemeManager.java              (Dark / Light theme)
-            └── components/
-                ├── RoundedPanel.java
-                └── CircularGaugePanel.java
-```
+**Domain:** Machine Learning and Natural Language Processing
+
+**Repository:** AI-Fake-News-Detection
